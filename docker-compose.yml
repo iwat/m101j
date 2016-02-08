@@ -1,0 +1,13 @@
+mongo:
+    image: mongo:latest
+    command: ["mongod", "--smallfiles"]
+    hostname: mongo
+    ports:
+        - "27017:27017"
+
+web:
+    build: .
+    links:
+        - mongo:mongo
+    ports:
+        - "8082:8082"
